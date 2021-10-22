@@ -1,7 +1,9 @@
+import Table from './Table';
+
 function App() {
   return (
     <div>
-      <h1>Connected!</h1>
+      <Table />
     </div>
   );
 }
