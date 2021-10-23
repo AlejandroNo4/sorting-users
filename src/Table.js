@@ -1,10 +1,37 @@
+import { useState } from 'react';
 import data from './data.json';
+import sortedData from './logic';
+import DropDown from './DropDown';
 
 const Table = () => {
-  const row = data.map((user) => (
+  const initialState = data;
+  const [dataToRender, setDataToRender] = useState(initialState);
+
+  const toL = (word) => word.charAt(0).toLowerCase() + word.slice(1);
+
+  const clickHandler = ({ sortColumn, order }) => {
+    if (sortColumn === 'None') {
+      setDataToRender(initialState);
+    } else {
+      setDataToRender(sortedData([...dataToRender], toL(sortColumn), order));
+    }
+  };
+
+  const thTitles = ['Name', 'Address', 'City', 'Region', 'Country', 'Birthday'];
+
+  const headers = thTitles.map((title) => (
+    <tr key={thTitles.indexOf(title)}>
+      <th>
+        {title}
+        <DropDown column={title} clickHandler={clickHandler} />
+      </th>
+    </tr>
+  ));
+
+  const rows = dataToRender.map((user) => (
     <tr key={user.name}>
       <td>{user.name}</td>
-      <td>{user.adress}</td>
+      <td>{user.address}</td>
       <td>{user.city}</td>
       <td>{user.region}</td>
       <td>{user.country}</td>
@@ -14,17 +41,10 @@ const Table = () => {
   return (
     <table>
       <thead>
-        <tr>
-          <th>Name</th>
-          <th>Adress</th>
-          <th>City</th>
-          <th>Region</th>
-          <th>Country</th>
-          <th>Birthday</th>
-        </tr>
+        {headers}
       </thead>
       <tbody>
-        {row}
+        {rows}
       </tbody>
     </table>
   );
