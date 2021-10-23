@@ -20,12 +20,13 @@ const Table = () => {
   const thTitles = ['Name', 'Address', 'City', 'Region', 'Country', 'Birthday'];
 
   const headers = thTitles.map((title) => (
-    <tr key={thTitles.indexOf(title)}>
-      <th>
-        {title}
-        <DropDown column={title} clickHandler={clickHandler} />
-      </th>
-    </tr>
+    <th key={thTitles.indexOf(title)} className="yellow">
+      {title}
+      <DropDown
+        column={title}
+        clickHandler={clickHandler}
+      />
+    </th>
   ));
 
   const rows = dataToRender.map((user) => (
@@ -39,15 +40,11 @@ const Table = () => {
     </tr>
   ));
   return (
-    <table>
-      <thead>
-        {headers}
-      </thead>
-      <tbody>
-        {rows}
-      </tbody>
+    <table className="table">
+      <thead>{headers}</thead>
+      <tbody>{rows}</tbody>
     </table>
   );
 };
 
-export default (Table);
+export default Table;
