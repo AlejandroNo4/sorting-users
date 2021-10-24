@@ -23,7 +23,7 @@ const DropDown = ({ column, clickHandler }) => {
         onClick={() => handleChange()}
         data-testid={`showOp${column}`}
       >
-        Short by:
+        Sort by:
         {' '}
       </button>
       <div className={`options ${display}`}>

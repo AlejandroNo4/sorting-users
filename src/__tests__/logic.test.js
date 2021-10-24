@@ -1,4 +1,4 @@
-import sortedData from '../logic';
+import sortedData from '../logic/sortedData';
 import data from '../data.json';
 
 let dataTest;

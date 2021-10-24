@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import data from './data.json';
-import sortedData from './logic';
-import DropDown from './DropDown';
+import data from '../data.json';
+import sortedData from '../logic/sortedData';
+import DropDown from '../containers/DropDown';
 
 const Table = () => {
   const initialState = data;
@@ -18,12 +18,10 @@ const Table = () => {
   const thTitles = ['Name', 'Address', 'City', 'Region', 'Country', 'Birthday'];
 
   const headers = thTitles.map((title) => (
-    <tr key={thTitles.indexOf(title)}>
-      <th className="yellow">
-        {title}
-        <DropDown column={title} clickHandler={clickHandler} />
-      </th>
-    </tr>
+    <th className="yellow" key={thTitles.indexOf(title)}>
+      {title}
+      <DropDown column={title} clickHandler={clickHandler} />
+    </th>
   ));
 
   const rows = dataToRender.map((user) => (
@@ -38,7 +36,7 @@ const Table = () => {
   ));
   return (
     <table className="table">
-      <thead>{headers}</thead>
+      <thead><tr>{headers}</tr></thead>
       <tbody data-testid="tBody">{rows}</tbody>
     </table>
   );

@@ -1,4 +1,4 @@
-import Table from './Table';
+import Table from '../components/Table';
 
 const App = () => (
   <div className="main" data-testid="app">
