@@ -22,6 +22,10 @@ Each column can be sorted, from smallest to the greatest and vice versa. To do i
 - Jest
 - React Testing Library
 
+## Live Demo
+
+[Live Demo Link](https://sorting-people-no4.herokuapp.com)
+
 ## Prerequisites
 
 - Node.js installed
